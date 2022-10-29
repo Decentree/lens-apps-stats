@@ -26,7 +26,7 @@ const PieChart: React.FC<{
           legend: { labels: { useSeriesColors: true } },
         }}
         type="pie"
-        width={320}
+        width={370}
       />
       <Heading size="sm" mt={5}>
         {name}

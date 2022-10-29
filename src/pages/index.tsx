@@ -1,5 +1,20 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Flex, Heading, Text, Button, Tabs, Tab, TabList, TabPanels, TabPanel, Link, Center } from "@chakra-ui/react";
+import {
+  Flex,
+  Heading,
+  Text,
+  Button,
+  Tabs,
+  Tab,
+  TabList,
+  TabPanels,
+  TabPanel,
+  Link,
+  Center,
+  Box,
+  Tooltip,
+} from "@chakra-ui/react";
+import { InfoOutlineIcon } from "@chakra-ui/icons";
 
 import AppData from "../components/AppData";
 import AppTable from "../components/AppTable";
@@ -13,7 +28,7 @@ import { FaGithub } from "react-icons/fa";
 
 const firstToUpperCase = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-const APPS = ["lenster", "orb", "iris", "lenstube", "lumiere", "teaparty"];
+const APPS = ["lenster", "orb", "iris", "lenstube", "lumiere", "teaparty", "phaver", "onboard", "clipto"];
 const CHART_FIELDS: { name: string; field: keyof AppStats }[] = [
   { name: "posts", field: "totalPosts" },
   { name: "mirrors", field: "totalMirrors" },
@@ -67,7 +82,9 @@ const AppDataWrapper: React.FC<{ dateRange: DateRange }> = ({ dateRange }) => {
         </TabList>
         <TabPanels>
           <TabPanel>
-            <AppTable data={tableData} />
+            <Box>
+              <AppTable data={tableData} />
+            </Box>
           </TabPanel>
           <TabPanel>
             {loading ? (
@@ -102,14 +119,19 @@ const Home: React.FC = () => {
 
   return (
     <Flex direction="column" alignItems="center" height="100vh">
-      <Heading size="xl" pt={20} pb={3} px={3}>
+      <Heading size="xl" pt="30px" pb={3} px={3}>
         Lens Apps Stats (🌿, 📈)
       </Heading>
-      <Text fontSize="lg" textAlign="center" px={3}>
-        Statistics for apps on Lens protocol. Let the race begin!
-      </Text>
-      <Flex width={["96%", "96%", "70%", "70%"]} height="100%" flexDirection="column" mt={10} position="relative">
-        <Flex justifyContent="space-between" width="100%" flexDirection={["column", "column", "row", "row"]} mb={10}>
+      <Flex alignItems="center">
+        <Text fontSize="lg" textAlign="center" px={3}>
+          Statistics for apps on Lens Protocol. Let the race begin!
+        </Text>
+        <Tooltip label="Data are from the official Lens GraphQL API" placement="bottom">
+          <InfoOutlineIcon />
+        </Tooltip>
+      </Flex>
+      <Flex width={["96%", "96%", "80%", "80%"]} height="100%" flexDirection="column" mt={5} position="relative">
+        <Flex justifyContent="space-between" width="100%" flexDirection={["column", "column", "row", "row"]} mb={2}>
           <DatePicker onUpdate={setDateRange} reset={reset} />
           <a target="_blank" href="https://tally.so/r/nper6q">
             <Button colorScheme="green" marginTop={[3, 3, 0, 0]}>
@@ -118,7 +140,7 @@ const Home: React.FC = () => {
           </a>
         </Flex>
         <AppDataWrapper dateRange={dateRange} />
-        <Flex position={["static", "static", "absolute", "absolute"]} left={0} bottom={10}>
+        <Flex position={["static", "static", "absolute", "absolute"]} left={0} bottom={5}>
           <a href="https://github.com/Decentree/lens-apps-stats" target="_blank">
             <FaGithub size={24} />
           </a>
@@ -126,7 +148,7 @@ const Home: React.FC = () => {
         <Flex
           position={["static", "static", "absolute", "absolute"]}
           right={0}
-          bottom={10}
+          bottom={5}
           paddingBottom={[10, 10, 0, 0]}
           marginTop={2}>
           <Text>Made with ❤️ by&nbsp;</Text>

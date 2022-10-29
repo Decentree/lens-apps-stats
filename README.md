@@ -2,6 +2,6 @@
 
 ### 👋 About
 
-Statistics for apps on Lens protocol. Let the race begin!
+Statistics for apps on Lens Protocol. Let the race begin!
 
 Made with ❤️ by [decentree.com](https://decentree.com/)

@@ -20,11 +20,11 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="http://localhost:3000/" />
         <meta property="og:title" content="Lens Apps Stats" />
-        <meta property="og:description" content="Statistics for apps on Lens protocol. Let the race begin!" />
+        <meta property="og:description" content="Statistics for apps on Lens Protocol. Let the race begin!" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="http://localhost:3000/" />
         <meta property="twitter:title" content="Lens Apps Stats" />
-        <meta property="twitter:description" content="Statistics for apps on Lens protocol. Let the race begin!" />
+        <meta property="twitter:description" content="Statistics for apps on Lens Protocol. Let the race begin!" />
       </Head>
       <ChakraProvider theme={theme}>
         <ApolloProvider client={apolloClient}>

@@ -7,7 +7,7 @@ import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
 import Loading from "./Loading";
 import type { AppTableData } from "../types";
 
-const COLUMNS = ["name", "totalPosts", "totalMirrors", "totalComments"];
+const COLUMNS = ["name", "platform", "totalPosts", "totalMirrors", "totalComments"];
 
 type Column = typeof COLUMNS[number];
 type ColumnConfig = { name: string; defaultOrderAscending?: boolean };
@@ -15,6 +15,7 @@ type Ordering = { column: Column; ascending: boolean };
 
 const COLUMN_CONFIGS: Record<Column, ColumnConfig> = {
   name: { name: "Name" },
+  platform: { name: "Platform" },
   totalPosts: { name: "Posts", defaultOrderAscending: false },
   totalMirrors: { name: "Mirrors", defaultOrderAscending: false },
   totalComments: { name: "Comments", defaultOrderAscending: false },
@@ -84,8 +85,36 @@ const AppTable: React.FC<{ data: AppTableData | null }> = ({ data: appStats }) =
       window.open("https://orb.ac/", "_blank");
     } else if (name === "Teaparty") {
       window.open("https://app.teaparty.life/", "_blank");
-    } else {
+    } else if (name === "Lumiere") {
       window.open("https://lumiere.withlens.app/", "_blank");
+    } else if (name === "Phaver") {
+      window.open("https://phaver.com/", "_blank");
+    } else if (name === "Onboard") {
+      window.open("https://twitter.com/Onboard_HQ", "_blank");
+    } else if (name === "Clipto") {
+      window.open("https://www.clipto.io/", "_blank");
+    }
+  };
+
+  const handlePlaform = (name: string) => {
+    if (name === "Lenster") {
+      return "Web";
+    } else if (name === "Lenstube") {
+      return "Web";
+    } else if (name === "Iris") {
+      return "Web";
+    } else if (name === "Orb") {
+      return "Mobile";
+    } else if (name === "Teaparty") {
+      return "Web";
+    } else if (name === "Lumiere") {
+      return "Web";
+    } else if (name === "Phaver") {
+      return "Mobile";
+    } else if (name === "Onboard") {
+      return "Mobile";
+    } else if (name === "Clipto") {
+      return "Web";
     }
   };
 
@@ -119,6 +148,7 @@ const AppTable: React.FC<{ data: AppTableData | null }> = ({ data: appStats }) =
               orderedStats.map(({ name, totalPosts, totalMirrors, totalComments }) => (
                 <Tr key={name} cursor="pointer" onClick={() => handleRedirect(name)}>
                   <Td>{name}</Td>
+                  <Td>{handlePlaform(name)}</Td>
                   <Td>{totalPosts}</Td>
                   <Td>{totalMirrors}</Td>
                   <Td>{totalComments}</Td>

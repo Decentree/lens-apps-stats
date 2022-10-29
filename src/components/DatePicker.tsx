@@ -145,7 +145,7 @@ const DatePicker: React.FC<{
             readOnly
             w="215px"
             cursor="pointer"
-            placeholder="Select range"
+            placeholder="Select time range"
             value={dateRangeToString(dateRange)}
           />
         </PopoverTrigger>
