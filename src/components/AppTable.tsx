@@ -102,6 +102,7 @@ const AppTable: React.FC<{ data: AppTableData | null }> = ({ data: appStats }) =
                   orderable={COLUMN_CONFIGS[column].defaultOrderAscending !== undefined}
                   ascending={ordering.column === column ? ordering.ascending : undefined}
                   updateOrdering={() => updateOrdering(column)}
+                  cursor="pointer"
                 />
               ))}
             </Tr>
