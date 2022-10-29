@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from "react";
 import _ from "lodash";
 
 import { Box, Flex, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
-import { TriangleDownIcon, TriangleUpIcon, ExternalLinkIcon } from "@chakra-ui/icons";
+import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
 
 import Loading from "./Loading";
 import type { AppTableData } from "../types";
@@ -102,7 +102,6 @@ const AppTable: React.FC<{ data: AppTableData | null }> = ({ data: appStats }) =
                   orderable={COLUMN_CONFIGS[column].defaultOrderAscending !== undefined}
                   ascending={ordering.column === column ? ordering.ascending : undefined}
                   updateOrdering={() => updateOrdering(column)}
-                  cursor="pointer"
                 />
               ))}
             </Tr>

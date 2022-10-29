@@ -132,7 +132,8 @@ const DatePickerInner: React.FC<{
 
 const DatePicker: React.FC<{
   onUpdate: (values: DateRange) => void;
-}> = ({ onUpdate }) => {
+  reset: () => void;
+}> = ({ onUpdate, reset }) => {
   const [dateRange, setDateRange] = useState<DateRange>({});
 
   return (
@@ -156,7 +157,6 @@ const DatePicker: React.FC<{
                   }
                   disableFutureDates={true}
                 />
-                <Button onClick={() => setDateRange(({ end }) => ({ end }))}>Clear from</Button>
               </Flex>
               <Flex direction="column" align="center" gap={4}>
                 <DatePickerInner
@@ -170,20 +170,29 @@ const DatePicker: React.FC<{
                   disablePastDates={dateRange.start}
                   disableFutureDates
                 />
-                <Button onClick={() => setDateRange(({ start }) => ({ start }))}>Clear to</Button>
               </Flex>
             </Flex>
           </PopoverBody>
         </PopoverContent>
       </Popover>
       <Button
-        colorScheme="green"
         disabled={dateRange.start === undefined || dateRange.end === undefined}
-        variant="ghost"
         ml={2}
         onClick={() => onUpdate(dateRange)}>
         Load
       </Button>
+      {(dateRange.start !== undefined || dateRange.end !== undefined) && (
+        <Button
+          colorScheme="green"
+          variant="ghost"
+          ml={2}
+          onClick={() => {
+            reset();
+            setDateRange({});
+          }}>
+          Reset
+        </Button>
+      )}
     </Flex>
   );
 };

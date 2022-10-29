@@ -88,6 +88,10 @@ const AppDataWrapper: React.FC<{ dateRange: DateRange }> = ({ dateRange }) => {
 const Home: React.FC = () => {
   const [dateRange, setDateRange] = useState<DateRange>({});
 
+  const reset = () => {
+    setDateRange({});
+  };
+
   return (
     <Flex direction="column" alignItems="center" height="100vh">
       <Heading size="xl" pt={20} pb={3}>
@@ -97,10 +101,10 @@ const Home: React.FC = () => {
         Statistics for apps on Lens protocol. Let the race begin!
       </Text>
       <Flex width={["96%", "96%", "70%", "70%"]} height="100%" flexDirection="column" mt={10} position="relative">
-        <Flex justifyContent="space-between" width="100%" flexDirection={["column", "row", "row", "row"]} mb={10}>
-          <DatePicker onUpdate={setDateRange} />
+        <Flex justifyContent="space-between" width="100%" flexDirection={["column", "column", "row", "row"]} mb={10}>
+          <DatePicker onUpdate={setDateRange} reset={reset} />
           <a target="_blank" href="https://tally.so/r/nper6q">
-            <Button colorScheme="green" marginTop={[2, 0, 0, 0]}>
+            <Button colorScheme="green" marginTop={[3, 3, 0, 0]}>
               Add app
             </Button>
           </a>
