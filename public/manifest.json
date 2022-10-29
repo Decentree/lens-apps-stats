@@ -1,6 +1,6 @@
 {
-  "name": "PROJECT_NAME",
-  "short_name": "PROJECT_NAME",
+  "name": "Lens Apps Stats",
+  "short_name": "Lens Apps Stats",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#fff",
