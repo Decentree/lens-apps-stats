@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from "react";
 import _ from "lodash";
 
 import { Box, Flex, Table, TableContainer, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
-import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
+import { TriangleDownIcon, TriangleUpIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 
 import Loading from "./Loading";
 import type { AppTableData } from "../types";
@@ -73,6 +73,22 @@ const AppTable: React.FC<{ data: AppTableData | null }> = ({ data: appStats }) =
     [appStats, ordering]
   );
 
+  const handleRedirect = (name: string) => {
+    if (name === "Lenster") {
+      window.open("https://lenster.xyz/", "_blank");
+    } else if (name === "Lenstube") {
+      window.open("https://lenstube.xyz/", "_blank");
+    } else if (name === "Iris") {
+      window.open("https://irisapp.xyz/", "_blank");
+    } else if (name === "Orb") {
+      window.open("https://orb.ac/", "_blank");
+    } else if (name === "Teaparty") {
+      window.open("https://app.teaparty.life/", "_blank");
+    } else {
+      window.open("https://lumiere.withlens.app/", "_blank");
+    }
+  };
+
   return (
     <>
       <TableContainer>
@@ -94,14 +110,14 @@ const AppTable: React.FC<{ data: AppTableData | null }> = ({ data: appStats }) =
             {orderedStats === null ? (
               <Tr>
                 <Td colSpan={4}>
-                  <Flex justify="center" align="center" h={200}>
+                  <Flex justify="center" align="center" h={280}>
                     <Loading />
                   </Flex>
                 </Td>
               </Tr>
             ) : (
               orderedStats.map(({ name, totalPosts, totalMirrors, totalComments }) => (
-                <Tr key={name} cursor="pointer">
+                <Tr key={name} cursor="pointer" onClick={() => handleRedirect(name)}>
                   <Td>{name}</Td>
                   <Td>{totalPosts}</Td>
                   <Td>{totalMirrors}</Td>

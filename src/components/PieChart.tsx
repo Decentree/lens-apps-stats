@@ -15,14 +15,18 @@ const PieChart: React.FC<{
         series={series}
         options={{
           chart: {
-            width: 305,
             type: "pie",
+            events: {
+              mounted: (chart) => {
+                chart.windowResizeHandler();
+              },
+            },
           },
           labels,
           legend: { labels: { useSeriesColors: true } },
         }}
         type="pie"
-        width="305px"
+        width={320}
       />
       <Heading size="sm" mt={5}>
         {name}

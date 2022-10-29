@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Flex, Heading, Text, Button, Tabs, Tab, TabList, TabPanels, TabPanel, Link } from "@chakra-ui/react";
+import { Flex, Heading, Text, Button, Tabs, Tab, TabList, TabPanels, TabPanel, Link, Center } from "@chakra-ui/react";
 
 import AppData from "../components/AppData";
 import AppTable from "../components/AppTable";
@@ -63,9 +63,11 @@ const AppDataWrapper: React.FC<{ dateRange: DateRange }> = ({ dateRange }) => {
           </TabPanel>
           <TabPanel>
             {loading ? (
-              <Loading />
+              <Center mt={10}>
+                <Loading />
+              </Center>
             ) : (
-              <Flex direction={{ base: "column", lg: "row" }}>
+              <Flex overflowY="scroll" flexDirection={["column", "column", "row", "row"]}>
                 {CHART_FIELDS.map(({ name, field }) => (
                   <PieChart
                     key={field}
@@ -94,15 +96,17 @@ const Home: React.FC = () => {
       <Text fontSize="lg" textAlign="center">
         Statistics for apps on Lens protocol. Let the race begin!
       </Text>
-      <Flex width="60%" height="100%" flexDirection="column" mt={10} position="relative">
-        <Flex justifyContent="space-between" width="100%" mb={10}>
+      <Flex width={["96%", "96%", "70%", "70%"]} height="100%" flexDirection="column" mt={10} position="relative">
+        <Flex justifyContent="space-between" width="100%" flexDirection={["column", "row", "row", "row"]} mb={10}>
           <DatePicker onUpdate={setDateRange} />
           <a target="_blank" href="https://tally.so/r/nper6q">
-            <Button colorScheme="green">Add app</Button>
+            <Button colorScheme="green" marginTop={[2, 0, 0, 0]}>
+              Add app
+            </Button>
           </a>
         </Flex>
         <AppDataWrapper dateRange={dateRange} />
-        <Flex position="absolute" right={0} bottom={10}>
+        <Flex position={["static", "static", "absolute", "absolute"]} right={0} bottom={5} paddingBottom={5}>
           <Text>Made with ❤️ by&nbsp;</Text>
           <Link href="https://decentree.com/" color="green" isExternal>
             decentree.com
