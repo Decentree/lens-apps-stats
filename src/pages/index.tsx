@@ -1,18 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  Flex,
-  Heading,
-  Text,
-  Button,
-  Tabs,
-  Tab,
-  TabList,
-  TabPanels,
-  TabPanel,
-  Link,
-  Center,
-  Box,
-} from "@chakra-ui/react";
+import { Flex, Heading, Text, Button, Tabs, Tab, TabList, TabPanels, TabPanel, Link, Center } from "@chakra-ui/react";
 
 import AppData from "../components/AppData";
 import AppTable from "../components/AppTable";
@@ -55,8 +42,8 @@ const AppDataWrapper: React.FC<{ dateRange: DateRange }> = ({ dateRange }) => {
 
   const updateValue = useCallback(
     (app: string) => (data: AppStats) =>
-      setAppStats((appStats) => ({
-        ...appStats,
+      setAppStats((stats) => ({
+        ...stats,
         [app]: data,
       })),
     []
@@ -65,7 +52,13 @@ const AppDataWrapper: React.FC<{ dateRange: DateRange }> = ({ dateRange }) => {
   return (
     <>
       {APPS.map((app) => (
-        <AppData key={app} app={app} dateRange={dateRange} updateValue={updateValue(app)} />
+        <AppData
+          key={app}
+          app={app}
+          dateRange={dateRange}
+          updateValue={updateValue(app)}
+          shouldUpdate={appStats[app] === undefined}
+        />
       ))}
       <Tabs colorScheme="green">
         <TabList>
