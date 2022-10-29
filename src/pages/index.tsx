@@ -102,10 +102,10 @@ const Home: React.FC = () => {
 
   return (
     <Flex direction="column" alignItems="center" height="100vh">
-      <Heading size="xl" pt={20} pb={3}>
+      <Heading size="xl" pt={20} pb={3} px={3}>
         Lens Apps Stats (🌿, 📈)
       </Heading>
-      <Text fontSize="lg" textAlign="center">
+      <Text fontSize="lg" textAlign="center" px={3}>
         Statistics for apps on Lens protocol. Let the race begin!
       </Text>
       <Flex width={["96%", "96%", "70%", "70%"]} height="100%" flexDirection="column" mt={10} position="relative">
@@ -127,7 +127,7 @@ const Home: React.FC = () => {
           position={["static", "static", "absolute", "absolute"]}
           right={0}
           bottom={10}
-          paddingBottom={2}
+          paddingBottom={[10, 10, 0, 0]}
           marginTop={2}>
           <Text>Made with ❤️ by&nbsp;</Text>
           <Link href="https://decentree.com/" color="green" isExternal>
