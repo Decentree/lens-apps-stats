@@ -140,7 +140,14 @@ const DatePicker: React.FC<{
     <Flex alignItems="center">
       <Popover>
         <PopoverTrigger>
-          <Input readOnly w="215px" cursor="pointer" placeholder="Select range" value={dateRangeToString(dateRange)} />
+          <Input
+            focusBorderColor="green.500"
+            readOnly
+            w="215px"
+            cursor="pointer"
+            placeholder="Select range"
+            value={dateRangeToString(dateRange)}
+          />
         </PopoverTrigger>
         <PopoverContent w="min-content">
           <PopoverArrow />
