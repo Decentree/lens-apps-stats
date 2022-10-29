@@ -1,5 +1,18 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Flex, Heading, Text, Button, Tabs, Tab, TabList, TabPanels, TabPanel, Link, Center } from "@chakra-ui/react";
+import {
+  Flex,
+  Heading,
+  Text,
+  Button,
+  Tabs,
+  Tab,
+  TabList,
+  TabPanels,
+  TabPanel,
+  Link,
+  Center,
+  Box,
+} from "@chakra-ui/react";
 
 import AppData from "../components/AppData";
 import AppTable from "../components/AppTable";
@@ -8,6 +21,8 @@ import Loading from "../components/Loading";
 import PieChart from "../components/PieChart";
 
 import { AppStats, DateRange } from "../types";
+
+import { FaGithub } from "react-icons/fa";
 
 const firstToUpperCase = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
@@ -110,7 +125,17 @@ const Home: React.FC = () => {
           </a>
         </Flex>
         <AppDataWrapper dateRange={dateRange} />
-        <Flex position={["static", "static", "absolute", "absolute"]} right={0} bottom={5} paddingBottom={5}>
+        <Flex position={["static", "static", "absolute", "absolute"]} left={0} bottom={10}>
+          <a href="https://github.com/Decentree/lens-apps-stats" target="_blank">
+            <FaGithub size={24} />
+          </a>
+        </Flex>
+        <Flex
+          position={["static", "static", "absolute", "absolute"]}
+          right={0}
+          bottom={10}
+          paddingBottom={2}
+          marginTop={2}>
           <Text>Made with ❤️ by&nbsp;</Text>
           <Link href="https://decentree.com/" color="green" isExternal>
             Decentree
