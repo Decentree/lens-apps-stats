@@ -50,7 +50,6 @@ const ColumnHeader: React.FC<{
 };
 
 const AppTable: React.FC<{ data: AppTableData | null }> = ({ data: appStats }) => {
-  const [show, setShow] = useState<booleanl>(false);
   const [ordering, setOrdering] = useState<Ordering>({
     column: "totalPosts",
     ascending: false,
