@@ -109,7 +109,7 @@ const Home: React.FC = () => {
         <Flex position={["static", "static", "absolute", "absolute"]} right={0} bottom={5} paddingBottom={5}>
           <Text>Made with ❤️ by&nbsp;</Text>
           <Link href="https://decentree.com/" color="green" isExternal>
-            decentree.com
+            Decentree
           </Link>
         </Flex>
       </Flex>
