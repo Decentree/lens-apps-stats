@@ -138,8 +138,8 @@ const AppTable: React.FC<{ data: AppTableData | null }> = ({ data: appStats }) =
           <Tbody>
             {orderedStats === null ? (
               <Tr>
-                <Td colSpan={4}>
-                  <Flex justify="center" align="center" h={280}>
+                <Td colSpan={5}>
+                  <Flex justify="center" align="center" h={444}>
                     <Loading />
                   </Flex>
                 </Td>

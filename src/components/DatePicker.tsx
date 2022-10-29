@@ -10,7 +10,10 @@ import {
   PopoverContent,
   PopoverTrigger,
   extendTheme,
+  InputGroup,
+  InputRightElement,
 } from "@chakra-ui/react";
+import { CalendarIcon } from "@chakra-ui/icons";
 import {
   Calendar,
   CalendarControls,
@@ -140,14 +143,16 @@ const DatePicker: React.FC<{
     <Flex alignItems="center">
       <Popover>
         <PopoverTrigger>
-          <Input
-            focusBorderColor="green.500"
-            readOnly
-            w="215px"
-            cursor="pointer"
-            placeholder="Select time range"
-            value={dateRangeToString(dateRange)}
-          />
+          <InputGroup w="250px">
+            <Input
+              focusBorderColor="green.500"
+              readOnly
+              cursor="pointer"
+              placeholder="Select time range"
+              value={dateRangeToString(dateRange)}
+            />
+            <InputRightElement pointerEvents="none" children={<CalendarIcon color="gray.300" />} />
+          </InputGroup>
         </PopoverTrigger>
         <PopoverContent w="min-content">
           <PopoverArrow />
