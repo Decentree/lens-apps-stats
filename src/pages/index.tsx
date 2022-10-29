@@ -122,8 +122,8 @@ const Home: React.FC = () => {
       <Heading size="xl" pt="30px" pb={3} px={3}>
         Lens Apps Stats (🌿, 📈)
       </Heading>
-      <Flex alignItems="center">
-        <Text fontSize="lg" textAlign="center" px={3}>
+      <Flex alignItems="center" px={3}>
+        <Text fontSize="lg" textAlign="center" mr={2}>
           Statistics for apps on Lens Protocol. Let the race begin!
         </Text>
         <Tooltip label="Data are from the official Lens GraphQL API" placement="bottom">
