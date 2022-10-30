@@ -92,7 +92,7 @@ const AppDataWrapper: React.FC<{ dateRange: DateRange }> = ({ dateRange }) => {
                 <Loading />
               </Center>
             ) : (
-              <Flex overflowY="scroll" flexDirection={["column", "column", "row", "row"]}>
+              <Flex overflowY="scroll" justifyContent="center" flexDirection={["column", "column", "row", "row"]}>
                 {CHART_FIELDS.map(({ name, field }) => (
                   <PieChart
                     key={field}
