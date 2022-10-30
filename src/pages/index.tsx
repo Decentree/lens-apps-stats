@@ -122,16 +122,41 @@ const AppDataWrapper: React.FC<{ dateRange: DateRange }> = ({ dateRange }) => {
                 <Loading />
               </Center>
             ) : (
-              <Flex overflowY="scroll" justifyContent="center" flexDirection={["column", "column", "row", "row"]}>
-                {CHART_FIELDS.map(({ name, field }) => (
-                  <PieChart
-                    key={field}
-                    name={`Apps by ${name}`}
-                    labels={APPS.map(firstToUpperCase)}
-                    series={APPS.map((app) => appStats[app][field])}
-                  />
-                ))}
-              </Flex>
+              <Box>
+                <Flex flexDirection="row" gap={3}>
+                  <Button
+                    variant="solid"
+                    onClick={() => setApps("all")}
+                    colorScheme={apps === "all" ? "green" : "gray"}
+                    h="35px">
+                    All
+                  </Button>
+                  <Button
+                    variant="solid"
+                    onClick={() => setApps("web")}
+                    colorScheme={apps === "web" ? "green" : "gray"}
+                    h="35px">
+                    Web
+                  </Button>
+                  <Button
+                    variant="solid"
+                    onClick={() => setApps("mobile")}
+                    colorScheme={apps === "mobile" ? "green" : "gray"}
+                    h="35px">
+                    Mobile
+                  </Button>
+                </Flex>
+                <Flex overflowY="scroll" justifyContent="center" flexDirection={["column", "column", "row", "row"]}>
+                  {CHART_FIELDS.map(({ name, field }) => (
+                    <PieChart
+                      key={field}
+                      name={`Apps by ${name}`}
+                      labels={APPS.map(firstToUpperCase)}
+                      series={APPS.map((app) => appStats[app][field])}
+                    />
+                  ))}
+                </Flex>
+              </Box>
             )}
           </TabPanel>
         </TabPanels>
