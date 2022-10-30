@@ -28,7 +28,6 @@ import { FaGithub } from "react-icons/fa";
 
 const firstToUpperCase = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-const APPS = ["lenster", "orb", "iris", "lenstube", "lumiere", "teaparty", "phaver", "onboard", "clipto"];
 const CHART_FIELDS: { name: string; field: keyof AppStats }[] = [
   { name: "posts", field: "totalPosts" },
   { name: "mirrors", field: "totalMirrors" },
@@ -37,12 +36,20 @@ const CHART_FIELDS: { name: string; field: keyof AppStats }[] = [
 
 const AppDataWrapper: React.FC<{ dateRange: DateRange }> = ({ dateRange }) => {
   const [appStats, setAppStats] = useState<Record<string, AppStats>>({});
+  const [apps, setApps] = useState<string>("all");
 
-  useEffect(() => setAppStats({}), [dateRange]);
+  useEffect(() => setAppStats({}), [dateRange, apps]);
+
+  const APPS =
+    apps === "all"
+      ? ["lenster", "orb", "iris", "lenstube", "lumiere", "teaparty", "phaver", "onboard", "clipto"]
+      : apps === "web"
+      ? ["lenster", "iris", "lenstube", "lumiere", "teaparty", "clipto"]
+      : ["orb", "phaver", "onboard"];
 
   const loading = useMemo(() => {
     return !APPS.every((app) => appStats[app] !== undefined);
-  }, [appStats]);
+  }, [appStats, apps]);
 
   const tableData = useMemo(
     () =>
@@ -52,7 +59,7 @@ const AppDataWrapper: React.FC<{ dateRange: DateRange }> = ({ dateRange }) => {
             ...stats,
             name: firstToUpperCase(name),
           })),
-    [appStats, loading]
+    [appStats, loading, APPS]
   );
 
   const updateValue = useCallback(
@@ -83,6 +90,29 @@ const AppDataWrapper: React.FC<{ dateRange: DateRange }> = ({ dateRange }) => {
         <TabPanels>
           <TabPanel>
             <Box>
+              <Flex flexDirection="row" gap={3}>
+                <Button
+                  variant="solid"
+                  onClick={() => setApps("all")}
+                  colorScheme={apps === "all" ? "green" : "gray"}
+                  h="35px">
+                  All
+                </Button>
+                <Button
+                  variant="solid"
+                  onClick={() => setApps("web")}
+                  colorScheme={apps === "web" ? "green" : "gray"}
+                  h="35px">
+                  Web
+                </Button>
+                <Button
+                  variant="solid"
+                  onClick={() => setApps("mobile")}
+                  colorScheme={apps === "mobile" ? "green" : "gray"}
+                  h="35px">
+                  Mobile
+                </Button>
+              </Flex>
               <AppTable data={tableData} />
             </Box>
           </TabPanel>
@@ -119,7 +149,7 @@ const Home: React.FC = () => {
 
   return (
     <Flex direction="column" alignItems="center" height="100vh">
-      <Heading size="xl" pt="30px" pb={3} px={3}>
+      <Heading size="xl" pt="20px" pb={3} px={3}>
         Lens Apps Stats (🌿, 📈)
       </Heading>
       <Flex alignItems="center" px={3}>
@@ -130,7 +160,7 @@ const Home: React.FC = () => {
           <InfoOutlineIcon />
         </Tooltip>
       </Flex>
-      <Flex width={["96%", "96%", "80%", "80%"]} height="100%" flexDirection="column" mt={5} position="relative">
+      <Flex width={["96%", "96%", "80%", "80%"]} height="100%" flexDirection="column" mt={3} position="relative">
         <Flex justifyContent="space-between" width="100%" flexDirection={["column", "column", "row", "row"]} mb={2}>
           <DatePicker onUpdate={setDateRange} reset={reset} />
           <a target="_blank" href="https://tally.so/r/nper6q">
@@ -140,7 +170,7 @@ const Home: React.FC = () => {
           </a>
         </Flex>
         <AppDataWrapper dateRange={dateRange} />
-        <Flex position={["static", "static", "absolute", "absolute"]} left={0} bottom={5}>
+        <Flex position={["static", "static", "absolute", "absolute"]} left={0} bottom={4}>
           <a href="https://github.com/Decentree/lens-apps-stats" target="_blank">
             <FaGithub size={24} />
           </a>
@@ -148,7 +178,7 @@ const Home: React.FC = () => {
         <Flex
           position={["static", "static", "absolute", "absolute"]}
           right={0}
-          bottom={5}
+          bottom={4}
           paddingBottom={[10, 10, 0, 0]}
           marginTop={2}>
           <Text>Made with ❤️ by&nbsp;</Text>
