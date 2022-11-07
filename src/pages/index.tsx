@@ -42,9 +42,9 @@ const AppDataWrapper: React.FC<{ dateRange: DateRange }> = ({ dateRange }) => {
 
   const APPS =
     apps === "all"
-      ? ["lenster", "orb", "iris", "lenstube", "lumiere", "teaparty", "phaver", "onboard", "clipto"]
+      ? ["lenster", "orb", "iris", "lenstube", "lumiere", "teaparty", "phaver", "onboard", "clipto", "memester"]
       : apps === "web"
-      ? ["lenster", "iris", "lenstube", "lumiere", "teaparty", "clipto"]
+      ? ["lenster", "iris", "lenstube", "lumiere", "teaparty", "clipto", "memester"]
       : ["orb", "phaver", "onboard"];
 
   const loading = useMemo(() => {

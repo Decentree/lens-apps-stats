@@ -93,6 +93,8 @@ const AppTable: React.FC<{ data: AppTableData | null }> = ({ data: appStats }) =
       window.open("https://twitter.com/Onboard_HQ", "_blank");
     } else if (name === "Clipto") {
       window.open("https://www.clipto.io/", "_blank");
+    } else if (name === "Memester") {
+      window.open("https://memester.xyz/", "_blank");
     }
   };
 
@@ -115,12 +117,14 @@ const AppTable: React.FC<{ data: AppTableData | null }> = ({ data: appStats }) =
       return "Mobile";
     } else if (name === "Clipto") {
       return "Web";
+    } else if (name === "Memester") {
+      return "Web";
     }
   };
 
   return (
     <>
-      <TableContainer>
+      <TableContainer height="517px" overflowY="scroll">
         <Table variant="striped">
           <Thead>
             <Tr>
