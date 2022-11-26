@@ -90,7 +90,7 @@ const AppDataWrapper: React.FC<{ dateRange: DateRange }> = ({ dateRange }) => {
         <TabPanels>
           <TabPanel>
             <Box>
-              <Flex flexDirection="row" gap={3}>
+              <Flex mb={1} flexDirection="row" gap={3}>
                 <Button
                   variant="solid"
                   onClick={() => setApps("all")}
@@ -123,7 +123,7 @@ const AppDataWrapper: React.FC<{ dateRange: DateRange }> = ({ dateRange }) => {
               </Center>
             ) : (
               <Box>
-                <Flex flexDirection="row" gap={3}>
+                <Flex mb={1} flexDirection="row" gap={3}>
                   <Button
                     variant="solid"
                     onClick={() => setApps("all")}
