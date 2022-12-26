@@ -57,10 +57,11 @@ const AppDataWrapper: React.FC<{ dateRange: DateRange }> = ({ dateRange }) => {
           "superfun",
           "lensta",
           "lensport",
+          "lentil",
         ]
       : apps === "web"
       ? ["lenster", "iris", "lenstube", "lumiere", "teaparty", "clipto", "memester", "superfun", "lensport"]
-      : ["orb", "phaver", "onboard", "buttrfly", "lensta"];
+      : ["orb", "phaver", "onboard", "buttrfly", "lensta", "lentil"];
 
   const loading = useMemo(() => {
     return !APPS.every((app) => appStats[app] !== undefined);
