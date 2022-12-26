@@ -74,30 +74,6 @@ const AppTable: React.FC<{ data: AppTableData | null }> = ({ data: appStats }) =
     [appStats, ordering]
   );
 
-  const handleRedirect = (name: string) => {
-    if (name === "Lenster") {
-      window.open("https://lenster.xyz/", "_blank");
-    } else if (name === "Lenstube") {
-      window.open("https://lenstube.xyz/", "_blank");
-    } else if (name === "Iris") {
-      window.open("https://irisapp.xyz/", "_blank");
-    } else if (name === "Orb") {
-      window.open("https://orb.ac/", "_blank");
-    } else if (name === "Teaparty") {
-      window.open("https://app.teaparty.life/", "_blank");
-    } else if (name === "Lumiere") {
-      window.open("https://lumiere.withlens.app/", "_blank");
-    } else if (name === "Phaver") {
-      window.open("https://phaver.com/", "_blank");
-    } else if (name === "Onboard") {
-      window.open("https://twitter.com/Onboard_HQ", "_blank");
-    } else if (name === "Clipto") {
-      window.open("https://www.clipto.io/", "_blank");
-    } else if (name === "Memester") {
-      window.open("https://memester.xyz/", "_blank");
-    }
-  };
-
   const handlePlaform = (name: string) => {
     if (name === "Lenster") {
       return "Web";
@@ -118,6 +94,14 @@ const AppTable: React.FC<{ data: AppTableData | null }> = ({ data: appStats }) =
     } else if (name === "Clipto") {
       return "Web";
     } else if (name === "Memester") {
+      return "Web";
+    } else if (name === "Buttrfly") {
+      return "Mobile";
+    } else if (name === "Lensport") {
+      return "Web";
+    } else if (name === "Lensta") {
+      return "Mobile";
+    } else if (name === "Superfun") {
       return "Web";
     }
   };
@@ -150,7 +134,7 @@ const AppTable: React.FC<{ data: AppTableData | null }> = ({ data: appStats }) =
               </Tr>
             ) : (
               orderedStats.map(({ name, totalPosts, totalMirrors, totalComments }) => (
-                <Tr key={name} cursor="pointer" onClick={() => handleRedirect(name)}>
+                <Tr key={name} cursor="pointer">
                   <Td>{name}</Td>
                   <Td>{handlePlaform(name)}</Td>
                   <Td>{totalPosts}</Td>
