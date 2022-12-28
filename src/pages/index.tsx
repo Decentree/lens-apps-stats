@@ -58,9 +58,10 @@ const AppDataWrapper: React.FC<{ dateRange: DateRange }> = ({ dateRange }) => {
           "lensta",
           "lensport",
           "lentil",
+          "amnisiac",
         ]
       : apps === "web"
-      ? ["lenster", "iris", "lenstube", "lumiere", "teaparty", "clipto", "memester", "superfun", "lensport"]
+      ? ["lenster", "iris", "lenstube", "lumiere", "teaparty", "clipto", "memester", "superfun", "lensport", "amnisiac"]
       : ["orb", "phaver", "onboard", "buttrfly", "lensta", "lentil"];
 
   const loading = useMemo(() => {

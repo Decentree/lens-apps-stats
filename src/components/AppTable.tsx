@@ -105,6 +105,8 @@ const AppTable: React.FC<{ data: AppTableData | null }> = ({ data: appStats }) =
       return "Web";
     } else if (name === "Lentil") {
       return "Mobile";
+    } else if (name === "Amnisiac") {
+      return "Mobile";
     }
   };
 
